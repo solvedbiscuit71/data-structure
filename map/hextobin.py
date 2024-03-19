@@ -24,4 +24,6 @@ def hextobin(hex: str) -> str:
         bin += table[c.upper()] + ' '
     return bin[:-1] if len(bin) > 0 else ''
 
-print(hextobin('A7B3'))
+hex = 'A84ABD'
+print('hexadecimal:', hex)
+print('binary:', hextobin(hex))
