@@ -76,6 +76,13 @@ def remove(node, value):
             node.data = tmp.data
             node.right = remove(node.right, tmp.data)
 
+            # inorder predecessor
+            # tmp = node.left
+            # while tmp.right:
+            #     tmp = tmp.right
+            # node.data = tmp.data
+            # node.left = remove(node.left, tmp.data)
+
             return node
         return node
 

@@ -15,7 +15,6 @@ class Node:
         self.height = 1 + max(left_height, right_height)
         self.factor = right_height - left_height
 
-# From ./rotation.py
 def rotate_right(node: Node):
     left: Node = node.left # type: ignore
     node.left = left.right
@@ -33,7 +32,6 @@ def rotate_left(node: Node):
     node.update()
     right.update()
     return right
-# End
 
 def balance(node: Node) -> Node:
     if node.factor == -2 and node.left is not None:
@@ -101,12 +99,28 @@ def remove(node: Node | None, value: Any) -> Node | None:
     node.update()
     return balance(node)
 
+def _inorder(node: Node | None):
+    if node:
+        _inorder(node.left)
+        print(node.value, end=' ')
+        _inorder(node.right)
+
+def inorder(root):
+    print("inorder: ", end='')
+    _inorder(root)
+    print()
+
 if __name__ == "__main__":
     root = None
+    print("inserting 5,3,8,1")
     root = insert(root, 5)
     root = insert(root, 3)
     root = insert(root, 8)
     root = insert(root, 1)
-    root = insert(root, 6)
-    root = insert(root, 9)
-    root = insert(root, 7)
+    inorder(root)
+
+    print("is 3 in AVL?", contains(root, 3))
+    print("removing 3")
+    root = remove(root, 3)
+    print("is 3 in AVL?", contains(root, 3))
+    inorder(root)
