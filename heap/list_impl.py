@@ -50,7 +50,7 @@ class MinHeap:
         self.bubble_down(index)
         return top
 
-    def front(self):
+    def top(self):
         return self.tree[0] if self.tree else None
 
     def __len__(self):
